@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -7,7 +10,7 @@
     <title>Jobfinder</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
 
     <!-- CSS here -->
@@ -23,154 +26,23 @@
     <link rel="stylesheet" href="public/css/slick.css">
     <link rel="stylesheet" href="public/css/nice-select.css">
     <link rel="stylesheet" href="public/css/style.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="public/dashboard/plugins/toastr/toastr.min.css">
 </head>
 
 <body>
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="public/img/logo/logo.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Đăng nhập -->
-    <div class="modal" tabindex="-1" id="loginModal" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Đăng nhập</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email *</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Mật khẩu *</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Ghi nhớ đăng nhập</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                    </form>
-                </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Đăng ký -->
-    <div class="modal" tabindex="-1" id="registerModal" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Đăng ký</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Họ và tên *</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email *</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Mật khẩu *</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Xác nhận mật khẩu *</label>
-                            <input type="password" class="form-control" id="rePassword">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Đăng ký</button>
-                    </form>
-                </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparrent">
-            <div class="headder-top header-sticky">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-2">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <a href="?mod=home"><img src="public/img/logo/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9">
-                            <div class="menu-wrapper">
-                                <!-- Main-menu -->
-                                <div class="main-menu">
-                                    <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="?mod=job">Việc làm</a></li>
-                                            <li><a href="about.html">Công ty</a></li>
-                                            <!-- <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li> -->
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a class="btn head-btn1" data-toggle="modal" data-target="#registerModal">Đăng ký</a>
-                                    <a class="btn head-btn2" data-toggle="modal" data-target="#loginModal">Đăng nhập</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
+    <?php
+    include_once('./view/user/layout/header.php');
+    ?>
     <main>
 
         <!-- slider Area Start-->
         <div class="slider-area ">
             <!-- Mobile Menu -->
             <div class="slider-active">
-                <div class="single-slider slider-height d-flex align-items-center" data-background="public/img/hero/h1_hero.jpg">
+                <div class="single-slider slider-height d-flex align-items-center"
+                    data-background="public/img/hero/h1_hero.jpg">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
@@ -353,21 +225,30 @@
                     <div class="col-xl-10">
                         <?php
                         foreach ($data as $row) {
-                        ?>
+                            ?>
                             <!-- single-job-content -->
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
-                                        <a href="?mod=job&act=detail&code=<?= $row['code'] ?>"><img src="public/img/icon/job-list1.png" alt=""></a>
+                                        <a href="?mod=job&act=detail&id=<?= $row['id'] ?>"><img
+                                                src="public/img/icon/job-list1.png" alt=""></a>
                                     </div>
                                     <div class="job-tittle">
-                                        <a href="?mod=job&act=detail&code=<?= $row['code'] ?>">
-                                            <h4><?= $row['name'] ?></h4>
+                                        <a href="?mod=job&act=detail&id=<?= $row['id'] ?>">
+                                            <h4>
+                                                <?= $row['name'] ?>
+                                            </h4>
                                         </a>
                                         <ul>
-                                            <li><?= $row['company'] ?></li>
-                                            <li><i class="fas fa-map-marker-alt"></i><?= $row['location'] ?></li>
-                                            <li><?= $row['salary'] ?></li>
+                                            <li>
+                                                <?= $row['company'] ?>
+                                            </li>
+                                            <li><i class="fas fa-map-marker-alt"></i>
+                                                <?= $row['location'] ?>
+                                            </li>
+                                            <li>
+                                                <?= $row['salary'] ?>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -376,7 +257,7 @@
                                     <span>7 hours ago</span>
                                 </div>
                             </div>
-                        <?php
+                            <?php
                         }
                         ?>
                     </div>
@@ -405,7 +286,8 @@
                             </div>
                             <div class="process-cap">
                                 <h5>1. Search a job</h5>
-                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
+                                    laborea.</p>
                             </div>
                         </div>
                     </div>
@@ -416,7 +298,8 @@
                             </div>
                             <div class="process-cap">
                                 <h5>2. Apply for job</h5>
-                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
+                                    laborea.</p>
                             </div>
                         </div>
                     </div>
@@ -427,7 +310,8 @@
                             </div>
                             <div class="process-cap">
                                 <h5>3. Get your job</h5>
-                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                                <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
+                                    laborea.</p>
                             </div>
                         </div>
                     </div>
@@ -455,7 +339,9 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-top-cap">
-                                        <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
+                                        <p>“I am at an age where I just want to be fit and healthy our bodies are our
+                                            responsibility! So start caring for your body and it will care for you. Eat
+                                            clean it will care for you and workout hard.”</p>
                                     </div>
                                 </div>
                             </div>
@@ -472,7 +358,9 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-top-cap">
-                                        <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
+                                        <p>“I am at an age where I just want to be fit and healthy our bodies are our
+                                            responsibility! So start caring for your body and it will care for you. Eat
+                                            clean it will care for you and workout hard.”</p>
                                     </div>
                                 </div>
                             </div>
@@ -489,7 +377,9 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-top-cap">
-                                        <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
+                                        <p>“I am at an age where I just want to be fit and healthy our bodies are our
+                                            responsibility! So start caring for your body and it will care for you. Eat
+                                            clean it will care for you and workout hard.”</p>
                                     </div>
                                 </div>
                             </div>
@@ -511,8 +401,12 @@
                                 <h2>24k Talented people are getting Jobs</h2>
                             </div>
                             <div class="support-caption">
-                                <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
-                                <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
+                                <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum
+                                    dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit
+                                    cillum.</p>
+                                <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu
+                                    quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt
+                                    mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
                                 <a href="about.html" class="btn post-btn">Post a job</a>
                             </div>
                         </div>
@@ -556,7 +450,8 @@
                                 </div>
                                 <div class="blog-cap">
                                     <p>| Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a>
+                                    </h3>
                                     <a href="#" class="more-btn">Read more »</a>
                                 </div>
                             </div>
@@ -575,7 +470,8 @@
                                 </div>
                                 <div class="blog-cap">
                                     <p>| Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a>
+                                    </h3>
                                     <a href="#" class="more-btn">Read more »</a>
                                 </div>
                             </div>
@@ -587,135 +483,10 @@
         <!-- Blog Area End -->
 
     </main>
-    <footer>
-        <!-- Footer Start-->
-        <div class="footer-area footer-bg footer-padding">
-            <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="single-footer-caption mb-30">
-                                <div class="footer-tittle">
-                                    <h4>About Us</h4>
-                                    <div class="footer-pera">
-                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Contact Info</h4>
-                                <ul>
-                                    <li>
-                                        <p>Address :Your address goes
-                                            here, your demo address.</p>
-                                    </li>
-                                    <li><a href="#">Phone : +8880 44338899</a></li>
-                                    <li><a href="#">Email : info@colorlib.com</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Important Link</h4>
-                                <ul>
-                                    <li><a href="#"> View Project</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Testimonial</a></li>
-                                    <li><a href="#">Proparties</a></li>
-                                    <li><a href="#">Support</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Newsletter</h4>
-                                <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
-                                </div>
-                                <!-- Form -->
-                                <div class="footer-form">
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address" class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm"><img src="public/img/icon/form.png" alt=""></button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="row footer-wejed justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <!-- logo -->
-                        <div class="footer-logo mb-20">
-                            <a href="index.html"><img src="public/img/logo/logo2_footer.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-tittle-bottom">
-                            <span>5000+</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-tittle-bottom">
-                            <span>451</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <!-- Footer Bottom Tittle -->
-                        <div class="footer-tittle-bottom">
-                            <span>568</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer-bottom area -->
-        <div class="footer-bottom-area footer-bg">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-10 col-lg-10 ">
-                            <div class="footer-copy-right">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>
-                                        document.write(new Date().getFullYear());
-                                    </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="footer-social f-right">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fas fa-globe"></i></a>
-                                <a href="#"><i class="fab fa-behance"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End-->
-    </footer>
+    
+    <?php
+    include_once('./view/user/layout/footer.php');
+    ?>
 
     <!-- JS here -->
 
@@ -753,6 +524,103 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="./public/js/plugins.js"></script>
     <script src="./public/js/main.js"></script>
+
+    <!-- Toastr -->
+    <script src="public/dashboard/plugins/toastr/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#registerModal').on('hidden.bs.modal', function (e) {
+                $('#form-registerUser')[0].reset();
+                $("form input").attr("class", "form-control");
+                $(".error").html("");
+            })
+
+            $('#form-registerUser').submit(function (e) {
+                e.preventDefault();
+                //lấy attribute data-url của form lưu vào biến url
+                let dataForm = $(this).serialize();
+                let check = true;
+
+                console.log("check:" + check);
+                console.log("dataForm:" + dataForm);
+
+                let name = $("#name_regis").val();
+                let phone = $("#phone_regis").val();
+                let email = $("#email_regis").val();
+                let status = "1";
+                let password = $("#password_regis").val();
+
+                if (check) {
+                    $.ajax({
+                        //sử dụng phương thức post
+                        type: 'POST',
+                        url: '?mod=user&act=register',
+                        data: {
+                            name: name,
+                            phone: phone,
+                            email: email,
+                            status: status,
+                            password: password
+                        },
+                        success: function (response) {
+                            // hiện thông báo thêm mới thành công bằng toastr
+                            toastr.success('Đăng ký thành công!');
+                            //ẩn modal add đi
+                            $('#registerModal').modal('hide');
+                            setTimeout(function () {
+                                window.location.href = "?mod=home";
+                            }, 2000);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.success('Đăng ký thất bại!');
+                            //xử lý lỗi tại đây
+                        }
+                    })
+                }
+            });
+
+            $('#form-loginUser').submit(function (e) {
+                e.preventDefault();
+                //lấy attribute data-url của form lưu vào biến url
+                let dataForm = $(this).serialize();
+                let check = true;
+
+                console.log("check:" + check);
+                console.log("dataForm:" + dataForm);
+
+                let email = $("#email").val();
+                let password = $("#password").val();
+
+                if (check) {
+                    $.ajax({
+                        //sử dụng phương thức post
+                        type: 'POST',
+                        url: '?mod=user&act=login',
+                        data: {
+                            email: email,
+                            password: password
+                        },
+                        success: function (response) {
+                            // hiện thông báo thêm mới thành công bằng toastr
+                            toastr.success('Đăng nhập thành công!');
+                            //ẩn modal add đi
+                            $('#loginModal').modal('hide');
+                            setTimeout(function () {
+                                window.location.href = "?mod=home";
+                            }, 2000);
+                            // $('#userTable').DataTable().ajax.reload();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.success('Đăng nhập thất bại!');
+                            //xử lý lỗi tại đây
+                        }
+                    })
+                }
+            });
+        });
+    </script>
 
 </body>
 

@@ -34,27 +34,21 @@
         }
         
         public function insert($data) {
-
-            $data = $_POST;
-
             $fields = '';
             $values = '';
             
             foreach ($data as $key => $value) {
+                if ($key == 'password') {
+                    $value = md5($value);
+                }
                 $fields .= $key .',';
                 $values .= "'".$value."',";
-                
-//                echo "<br> $values";
             }
             
             $fields = trim($fields,',');
             $values = trim($values,',');
-            
-//            echo "<br> $fields";
-//            echo "<br> $values";
 
             $query = "INSERT INTO ".$this->table." (".$fields.") VALUES (".$values.")";
-            
             $result = $this->conn->query($query);
             
             return $result;
@@ -142,9 +136,7 @@
         public function delete($code) {
 
             $query = "DELETE FROM ".$this->table." WHERE ".$this->primary_key." ='".$code."' ";
-
             $result = $this->conn->query($query);
-
             return $result;
         }
         

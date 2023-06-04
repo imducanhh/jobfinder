@@ -82,49 +82,49 @@
 	</script> -->
 	<!-- <script defer src="beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7cd21291dd7a9fdf","version":"2023.4.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}' crossorigin="anonymous"></script> -->
 	<script type="text/javascript">
-		// $("#btnLogin").on("click", function() {
-		// 	var username = $("#email").val();
-		// 	var password = $("#password").val();
+		$("#btnLogin").on("click", function() {
+			var username = $("#email").val();
+			var password = $("#password").val();
 
-		// 	console.log(username);
-		// 	console.log(password);
-		// 	var error = $("#error");
-		// 	var ok = $("#ok");
+			console.log(username);
+			console.log(password);
+			var error = $("#error");
+			var ok = $("#ok");
 
-		// 	// resert 2 thẻ div thông báo trở về rỗng mỗi khi click nút đăng nhập
-		// 	// error.html("");
-		// 	// ok.html("");
+			// resert 2 thẻ div thông báo trở về rỗng mỗi khi click nút đăng nhập
+			// error.html("");
+			// ok.html("");
 
-		// 	// Kiểm tra nếu username rỗng thì báo lỗi
-		// 	// if (username == "") {
-		// 	// 	error.html("Tên đăng nhập không được để trống");
-		// 	// 	return false;
-		// 	// }
-		// 	// Kiểm tra nếu password rỗng thì báo lỗi
-		// 	// if (password == "") {
-		// 	// 	error.html("Mật khẩu không được để trống");
-		// 	// 	return false;
-		// 	// }
+			// Kiểm tra nếu username rỗng thì báo lỗi
+			// if (username == "") {
+			// 	error.html("Tên đăng nhập không được để trống");
+			// 	return false;
+			// }
+			// Kiểm tra nếu password rỗng thì báo lỗi
+			// if (password == "") {
+			// 	error.html("Mật khẩu không được để trống");
+			// 	return false;
+			// }
 
-		// 	// Chạy ajax gửi thông tin username và password về server check_dang_nhap.php
-		// 	// để kiểm tra thông tin đăng nhập hợp lệ hay chưa
-		// 	$.ajax({
-		// 		url: "?mod=admin&act=login",
-		// 		method: "POST",
-		// 		data: {
-		// 			username: email,
-		// 			password: password
-		// 		},
-		// 		success: function(response) {
-		// 			if (response == "1") {
-		// 				ok.html("Đăng nhập thành công");
-		// 			} else {
-		// 				error.html("Tên đăng nhập hoặc mật khẩu không chính xác !");
-		// 			}
-		// 		}
-		// 	});
+			// Chạy ajax gửi thông tin username và password về server check_dang_nhap.php
+			// để kiểm tra thông tin đăng nhập hợp lệ hay chưa
+			$.ajax({
+				url: "?mod=admin&act=login",
+				method: "POST",
+				data: {
+					username: email,
+					password: password
+				},
+				success: function(response) {
+					if (response == "1") {
+						ok.html("Đăng nhập thành công");
+					} else {
+						error.html("Tên đăng nhập hoặc mật khẩu không chính xác !");
+					}
+				}
+			});
 
-		// });
+		});
 	</script>
 </body>
 

@@ -1,12 +1,12 @@
 <?php
     require_once('models/Model.php');
-    class Admin extends Model {
+    class User extends Model {
         var $conn;
-        var $table = 'admins';
+        var $table = 'user';
         var $primary_key = 'id'; 
 
         function check($data){
-            $query = "SELECT * FROM admins WHERE email='".$data['email']."' AND  password='".md5($data['password'])."'";
+            $query = "SELECT * FROM user WHERE email='".$data['email']."' AND  password='".md5($data['password'])."'";
             $result = $this->conn->query($query)->fetch_assoc();
             return $result;
         }
@@ -17,8 +17,7 @@
             return $result;
         }
 
-        public function insertUser($data) {
-            
+        public function register($data) {
             $fields = '';
             $values = '';
             
@@ -34,7 +33,6 @@
             $values = trim($values,',');
 
             $query = "INSERT INTO ".$this->table." (".$fields.") VALUES (".$values.")";
-            echo $query;
             $result = $this->conn->query($query);
             
             return $result;

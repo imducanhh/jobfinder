@@ -25,6 +25,15 @@ switch ($mod) {
             case 'detail':
                 $job_controller->detail();
                 break;
+            case 'edit':
+                $job_controller->edit();
+                break;
+            case 'delete':
+                $job_controller->deleteJob();
+                break;
+            case 'show':
+                $job_controller->show();
+                break;
             default:
                 $job_controller->list();
                 break;
@@ -46,12 +55,50 @@ switch ($mod) {
             case 'dashboard':
                 $admin_controller->dashboard();
                 break;
-                // default:
-                //     $admin_controller->formAdminLogin();
-                //     break;
+            case 'jobs':
+                $admin_controller->jobs();
+                break;
+            case 'insertJob':
+                $admin_controller->insertJob();
+                break;
+            case 'insertUser':
+                $admin_controller->insertUser();
+                break;
+            case 'showUser':
+                $admin_controller->showUser();
+                break;
+            case 'list':
+                $admin_controller->listUser();
+                break;
+            case 'listUserDatatable':
+                $admin_controller->listUserDatatable();
+                break;
+            case 'deleteUser':
+                $admin_controller->deleteUser();
+                break;
+            default:
+                $admin_controller->formAdminLogin();
+                break;
         }
         break;
-
+    case 'user':
+        require_once('controllers/UserController.php');
+        $user_controller = new UserController();
+        switch ($act) {
+            case 'logout':
+                $user_controller->logout();
+                break;
+            case 'login':
+                $user_controller->login();
+                break;
+            case 'register':
+                $user_controller->register();
+                break;
+            default:
+                $user_controller->formAdminLogin();
+                break;
+        }
+        break;
     default:
         header('Location: ?mod=home');
         break;

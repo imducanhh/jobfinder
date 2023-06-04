@@ -10,7 +10,7 @@
         
         public function list() {
             $data = $this->model->getAll();
-            include_once('view/home.php');
+            include_once('view/user/home.php');
         }
     }
 ?>

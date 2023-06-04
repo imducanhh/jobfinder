@@ -8,16 +8,37 @@
             $this->model = new Job();
         }
         
-        public function list() {
+        function list() {
             $data = $this->model->getAll();
-            include_once('view/jobs.php');
+            include_once('view/user/jobs.php');
         }
 
-        public function detail() {
-            $code = $_GET['code'];
-            $job = $this->model->find($code);
+        function detail() {
+            $id = $_GET['id'];
+            $job = $this->model->find($id);
             
-            include_once('view/job.php');
+            include_once('view/user/job.php');
+        }
+
+        function edit($data) {
+            // $id = $_GET['id'];
+            $job = $this->model->edit($data);
+            
+            include_once('view/user/job.php');
+        }
+
+        function deleteJob() {
+            $id = $_POST['id'];
+            $job = $this->model->delete($id);
+            
+            return $job;
+        }
+
+        function show() {
+            $id = $_GET['id'];
+            $job = $this->model->find($id);
+            
+            echo json_encode($job);
         }
     }
 ?>
