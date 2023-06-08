@@ -38,13 +38,6 @@ class UserController
         $data = $_POST;
         $user = new User();
         $user->register($data);
-        
-        if ($user != null) {
-            session_start();
-            $_SESSION['user'] = 1;
-            $_SESSION['isLogin'] = 1;
-            header("Location: ?mod=home");
-        }
         return $user;
     }
 
