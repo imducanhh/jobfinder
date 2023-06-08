@@ -14,18 +14,18 @@ session_start();
     <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="public/css/flaticon.css">
-    <link rel="stylesheet" href="public/css/price_rangs.css">
-    <link rel="stylesheet" href="public/css/slicknav.css">
-    <link rel="stylesheet" href="public/css/animate.min.css">
-    <link rel="stylesheet" href="public/css/magnific-popup.css">
-    <link rel="stylesheet" href="public/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="public/css/themify-icons.css">
-    <link rel="stylesheet" href="public/css/slick.css">
-    <link rel="stylesheet" href="public/css/nice-select.css">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./public/css/flaticon.css">
+    <link rel="stylesheet" href="./public/css/price_rangs.css">
+    <link rel="stylesheet" href="./public/css/slicknav.css">
+    <link rel="stylesheet" href="./public/css/animate.min.css">
+    <link rel="stylesheet" href="./public/css/magnific-popup.css">
+    <link rel="stylesheet" href="./public/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./public/css/themify-icons.css">
+    <link rel="stylesheet" href="./public/css/slick.css">
+    <link rel="stylesheet" href="./public/css/nice-select.css">
+    <link rel="stylesheet" href="./public/css/style.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="public/dashboard/plugins/toastr/toastr.min.css">
 </head>
@@ -527,101 +527,8 @@ session_start();
 
     <!-- Toastr -->
     <script src="public/dashboard/plugins/toastr/toastr.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            $('#registerModal').on('hidden.bs.modal', function (e) {
-                $('#form-registerUser')[0].reset();
-                $("form input").attr("class", "form-control");
-                $(".error").html("");
-            })
-
-            $('#form-registerUser').submit(function (e) {
-                e.preventDefault();
-                //lấy attribute data-url của form lưu vào biến url
-                let dataForm = $(this).serialize();
-                let check = true;
-
-                console.log("check:" + check);
-                console.log("dataForm:" + dataForm);
-
-                let name = $("#name_regis").val();
-                let phone = $("#phone_regis").val();
-                let email = $("#email_regis").val();
-                let status = "1";
-                let password = $("#password_regis").val();
-
-                if (check) {
-                    $.ajax({
-                        //sử dụng phương thức post
-                        type: 'POST',
-                        url: '?mod=user&act=register',
-                        data: {
-                            name: name,
-                            phone: phone,
-                            email: email,
-                            status: status,
-                            password: password
-                        },
-                        success: function (response) {
-                            // hiện thông báo thêm mới thành công bằng toastr
-                            toastr.success('Đăng ký thành công!');
-                            //ẩn modal add đi
-                            $('#registerModal').modal('hide');
-                            setTimeout(function () {
-                                window.location.href = "?mod=home";
-                            }, 2000);
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.success('Đăng ký thất bại!');
-                            //xử lý lỗi tại đây
-                        }
-                    })
-                }
-            });
-
-            $('#form-loginUser').submit(function (e) {
-                e.preventDefault();
-                //lấy attribute data-url của form lưu vào biến url
-                let dataForm = $(this).serialize();
-                let check = true;
-
-                console.log("check:" + check);
-                console.log("dataForm:" + dataForm);
-
-                let email = $("#email").val();
-                let password = $("#password").val();
-
-                if (check) {
-                    $.ajax({
-                        //sử dụng phương thức post
-                        type: 'POST',
-                        url: '?mod=user&act=login',
-                        data: {
-                            email: email,
-                            password: password
-                        },
-                        success: function (response) {
-                            // hiện thông báo thêm mới thành công bằng toastr
-                            toastr.success('Đăng nhập thành công!');
-                            //ẩn modal add đi
-                            $('#loginModal').modal('hide');
-                            setTimeout(function () {
-                                window.location.href = "?mod=home";
-                            }, 2000);
-                            // $('#userTable').DataTable().ajax.reload();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.success('Đăng nhập thất bại!');
-                            //xử lý lỗi tại đây
-                        }
-                    })
-                }
-            });
-        });
-    </script>
-
+    <!-- Login -->     
+    <script src="./public/login.js"></script>
 </body>
 
 </html>

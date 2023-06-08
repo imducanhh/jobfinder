@@ -24,13 +24,13 @@
                 <form id="form-loginUser" method="POST" role="form" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="text" class="form-control" id="email" aria-describedby="email-error">
-                        <small id="email-error" class="form-text text-muted"></small>
+                        <input type="text" class="form-control" id="email" name="email" aria-describedby="email-error">
+                        <small id="email-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <div class="form-group">
                         <label for="password">Mật khẩu *</label>
-                        <input type="password" class="form-control" id="password" aria-describedby="email-error">
-                        <small id="email-error" class="form-text text-muted"></small>
+                        <input type="password" class="form-control" id="password" name="password" aria-describedby="password-error">
+                        <small id="password-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -39,10 +39,6 @@
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 </form>
             </div>
-            <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
         </div>
     </div>
 </div>
@@ -63,31 +59,31 @@
                         <label for="name_regis">Họ và tên *</label>
                         <input type="text" class="form-control" id="name_regis" name="name_regis"
                             aria-describedby="name_regis-error">
-                        <small id="name_regis-error" class="form-text text-muted"></small>
+                        <small id="name_regis-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <div class="form-group">
                         <label for="phone_regis">Số điện thoại *</label>
                         <input type="text" class="form-control" id="phone_regis" name="phone_regis"
                             aria-describedby="phone_regis-error">
-                        <small id="phone_regis-error" class="form-text text-muted"></small>
+                        <small id="phone_regis-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <div class="form-group">
                         <label for="email_regis">Email *</label>
                         <input type="text" class="form-control" id="email_regis" name="email_regis"
                             aria-describedby="email_regis-error">
-                        <small id="email_regis-error" class="form-text text-muted"></small>
+                        <small id="email_regis-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <div class="form-group">
                         <label for="password_regis">Mật khẩu *</label>
                         <input type="password" class="form-control" id="password_regis" name="password_regis"
                             aria-describedby="password_regis-error">
-                        <small id="password_regis-error" class="form-text text-muted"></small>
+                        <small id="password_regis-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <div class="form-group">
                         <label for="repassword_regis">Xác nhận mật khẩu *</label>
                         <input type="password" class="form-control" id="repassword_regis" name="repassword_regis"
                             aria-describedby="repassword_regis-error">
-                        <small id="repassword_regis-error" class="form-text text-muted"></small>
+                        <small id="repassword_regis-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
                     <button type="submit" class="btn btn-primary">Đăng ký</button>
                 </form>
