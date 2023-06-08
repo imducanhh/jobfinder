@@ -150,35 +150,83 @@ $(document).ready(function () {
             $("#name_regis").attr("class", "form-control is-invalid");
             $("#name_regis-error").html("Họ và tên không được để trống!");
             check = false;
-        } else { check = true; }
+        } else if (name_regis.length < 6) {
+            $("#name_regis").attr("class", "form-control is-invalid");
+            $("#name_regis-error").html("Họ và tên của bạn quá ngắn!");
+            check = false;
+        } else if (name_regis.length > 20) {
+            $("#name_regis").attr("class", "form-control is-invalid");
+            $("#name_regis-error").html("Họ và tên của bạn quá dài!");
+            check = false;
+        } else {
+            $("#name_regis").attr("class", "form-control");
+            $("#name_regis-error").html("");
+            check = true;
+        }
 
         let phone_regis = $("#phone_regis").val();
         if (phone_regis == "") {
             $("#phone_regis").attr("class", "form-control is-invalid");
-            $("#phone_regis-error").html("Số điện toại không được để trống!");
+            $("#phone_regis-error").html("Số điện thoại không được để trống!");
             check = false;
-        } else { check = true; }
+        } else if (!isVietnamesePhoneNumberValid(phone_regis)) {
+            $("#phone_regis").attr("class", "form-control is-invalid");
+            $("#phone_regis-error").html("Số điện thoại không đúng định dạng!");
+            check = false;
+        } else {
+            $("#phone_regis").attr("class", "form-control");
+            $("#phone_regis-error").html("");
+            check = true;
+        }
 
         let email_regis = $("#email_regis").val();
         if (email_regis == "") {
             $("#email_regis").attr("class", "form-control is-invalid");
-            $("#email_regis-error").html("Email không được để trống!");
+            $("#email_regis-error").html("Số điện thoại không được để trống!");
             check = false;
-        } else { check = true; }
+        } else if (!isEmailValid(email_regis)) {
+            $("#email_regis").attr("class", "form-control is-invalid");
+            $("#email_regis-error").html("Email không đúng định dạng!");
+            check = false;
+        } else {
+            $("#email_regis").attr("class", "form-control");
+            $("#email_regis-error").html("");
+            check = true;
+        }
 
         let password_regis = $("#password_regis").val();
         if (password_regis == "") {
             $("#password_regis").attr("class", "form-control is-invalid");
             $("#password_regis-error").html("Mật khẩu không được để trống!");
             check = false;
-        } else { check = true; }
+        } else if (password_regis.length < 6) {
+            $("#password_regis").attr("class", "form-control is-invalid");
+            $("#password_regis-error").html("Mật khẩu của bạn quá ngắn!");
+            check = false;
+        } else if (password_regis.length > 20) {
+            $("#password_regis").attr("class", "form-control is-invalid");
+            $("#password_regis-error").html("Mật khẩu của bạn quá dài!");
+            check = false;
+        } else {
+            $("#password_regis").attr("class", "form-control");
+            $("#password_regis-error").html("");
+            check = true;
+        }
 
         let repassword_regis = $("#repassword_regis").val();
         if (repassword_regis == "") {
             $("#repassword_regis").attr("class", "form-control is-invalid");
             $("#repassword_regis-error").html("Mật khẩu không được để trống!");
             check = false;
-        } else { check = true; }
+        } else if (repassword_regis != password_regis) {
+            $("#repassword_regis").attr("class", "form-control is-invalid");
+            $("#repassword_regis-error").html("Mật khẩu không trùng khớp!");
+            check = false;
+        } else {
+            $("#repassword_regis").attr("class", "form-control");
+            $("#repassword_regis-error").html("");
+            check = true;
+        }
 
         let status_regis = 1;
 
@@ -199,9 +247,9 @@ $(document).ready(function () {
                     toastr.success('Đăng ký thành công!');
                     //ẩn modal add đi
                     $('#registerModal').modal('hide');
-                    setTimeout(function () {
-                        window.location.href = "?mod=home";
-                    }, 2000);
+                    // setTimeout(function () {
+                    //     window.location.href = "?mod=home";
+                    // }, 2000);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     toastr.success('Đăng ký thất bại!');

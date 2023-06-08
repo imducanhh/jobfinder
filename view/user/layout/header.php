@@ -32,10 +32,11 @@
                         <input type="password" class="form-control" id="password" name="password" aria-describedby="password-error">
                         <small id="password-error" class="form-text text-muted error invalid-feedback" style="color:#dc3545 !important"></small>
                     </div>
-                    <div class="form-group form-check">
+                    <br>
+                    <!-- <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Ghi nhớ đăng nhập</label>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 </form>
             </div>
